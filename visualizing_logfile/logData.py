@@ -11,7 +11,7 @@ def extract(text):
 
 NODE_CNT = 12
 ROOT_NODE = 1
-LOGFILE_NAME = "log.txt"
+LOGFILE_NAME = "G:/1.Study/1.School/UOU_Bigdata/visualizing_logfile/log.txt"
 TYPE_STR = [None, "AP", "Sensor", "Actuator", "Router", "Virtual Sensor"]
 NODE_COLOR = [None, "red", "white", "green", "cyan", "blue"]
 NODE_EDGECOLOR = ["white", "white", "black", "white", "white", "black"]
@@ -39,9 +39,6 @@ with open(LOGFILE_NAME, 'r') as file:
             sections = extract(line)
             root_id, root_type, root_level, root_rank, root_parent_id = map(int, sections[0].split(","))
             parent_node = root.get(root_parent_id, None)
-
-            levels[root_id] = root_level
-
             root[root_id] = Node(f"{root_id}", parent=parent_node)
             ranks[root_id] = root_rank
             node_type[root_id] = root_type
